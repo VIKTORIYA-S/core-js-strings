@@ -340,8 +340,10 @@ function isPalindrome(str) {
 }
 
 /**
- * Find the longest word in the sentence. If there are multiple longest words,
+ * 20 Find the longest word in the sentence. If there are multiple longest words,
  * the function returns the first one encountered.
+ * Найдите самое длинное слово в предложении. Если имеется несколько самых длинных слов,
+  * функция возвращает первое встретившееся.
  *
  * @param {string} sentence - The input sentence.
  * @returns {string} - The longest word in the sentence.
@@ -351,12 +353,23 @@ function isPalindrome(str) {
  *   findLongestWord('A long and winding road') => 'winding'
  *   findLongestWord('No words here') => 'words'
  */
-function findLongestWord(/* sentence */) {
-  throw new Error('Not implemented');
+function findLongestWord(sentence) {
+  const arrayWords = sentence.split(" ");
+  let longestWord = arrayWords[0];
+  for (const word of arrayWords) {
+    if (word.length > longestWord.length) {
+      longestWord = word;
+    } else if (sentence === '') {
+      longestWord = '';
+    }
+  }
+  console.log(longestWord);
+  return longestWord;
 }
 
 /**
- * Returns the string where each word is reversed.
+ * 21 Returns the string where each word is reversed.
+ * Возвращает строку, в которой каждое слово перевернуто.
  *
  * @param {string} str - The input string.
  * @return {string} - The string where each word is reversed.
@@ -365,12 +378,18 @@ function findLongestWord(/* sentence */) {
  *   reverseWords('Hello World') => 'olleH dlroW'
  *   reverseWords('The Quick Brown Fox') => 'ehT kciuQ nworB xoF'
  */
-function reverseWords(/* str */) {
-  throw new Error('Not implemented');
+function reverseWords(str) {
+  str = str.split(" ");
+  let res = [];
+  for (let i = 0; i < str.length; i++) {
+      res.push (str[i].split("").reverse().join(""));
+  }
+  return res.join(" ");
 }
 
 /**
- * Inverts the case of each character in the given string.
+ * 22 Inverts the case of each character in the given string.
+ * Инвертирует регистр каждого символа в заданной строке.
  *
  * @param {string} str - The input string.
  * @returns {string} - The string with the case of each character inverted.
@@ -380,13 +399,23 @@ function reverseWords(/* str */) {
  *   invertCase('JavaScript is Fun') => 'jAVAsCRIPT IS fUN'
  *   invertCase('12345') => '12345'
  */
-function invertCase(/* str */) {
-  throw new Error('Not implemented');
+function invertCase(str) {
+  str = str.split(' ');
+  let res = [];
+  for (let i = 0; i < str.length; i++) {
+    res.push (str[i].split(""));
+    if (res === UpperCase()) {
+      return res.toLowerCase().join(" ");
+    } else {
+      return res.toUpperCase().join(" ");
+    }
 }
-
+}
 /**
- * Returns the result of string template and given parameters firstName and lastName.
+ * 23 Returns the result of string template and given parameters firstName and lastName.
  * Please do not use concatenation, use template string :
+ * Возвращает результат шаблона строки и заданных параметров firstName и LastName.
+  * Пожалуйста, не используйте конкатенацию, используйте строку шаблона:
  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/template_strings
  *
  * @param {string} firstName - The first name to include in the template.
@@ -404,7 +433,8 @@ function getStringFromTemplate(firstName, lastName) {
 }
 
 /**
- * Extracts a name from template string 'Hello, First_Name Last_Name!'.
+ * 24 Extracts a name from template string 'Hello, First_Name Last_Name!'.
+ * Извлекает имя из строки шаблона «Привет, Имя Фамилия!».
  *
  * @param {string} value - The input value.
  * @return {string} - The name extracted from the template.
@@ -418,7 +448,7 @@ function extractNameFromTemplate(/* value */) {
 }
 
 /**
- * Remove the first and last angle brackets from tag string
+ * 25 Remove the first and last angle brackets from tag string
  *
  * @param {string} str - The input tag.
  * @return {string} - The tag without the first and last angle brackets.
@@ -433,7 +463,8 @@ function unbracketTag(str) {
 }
 
 /**
- * Extracts e-mails from single string with e-mails list delimited by semicolons
+ * 26 Extracts e-mails from single string with e-mails list delimited by semicolons
+ * Извлекает электронные письма из одной строки со списком адресов электронной почты, разделенным точкой с запятой.
  *
  * @param {string} str - The input string.
  * @return {array} - The list of e-mails extracted from the string.
@@ -452,7 +483,8 @@ function extractEmails(str) {
 }
 
 /**
- * Encode specified string with ROT13 cipher
+ * 27 Encode specified string with ROT13 cipher
+ * Закодировать указанную строку с помощью шифра ROT13.
  * See details:  https://en.wikipedia.org/wiki/ROT13
  *
  * @param {string} str - The input string.
@@ -472,9 +504,11 @@ function encodeToRot13(/* str */) {
 }
 
 /**
- * Returns playid card id.
+ * 28 Returns playid card id.
+ * Возвращает идентификатор карты playid.
  *
  * Playing cards initial deck includes the cards in the following order:
+ * Начальная колода игральных карт включает карты в следующем порядке:
  *
  *  'A♣','2♣','3♣','4♣','5♣','6♣','7♣','8♣','9♣','10♣','J♣','Q♣','K♣',
  *  'A♦','2♦','3♦','4♦','5♦','6♦','7♦','8♦','9♦','10♦','J♦','Q♦','K♦',

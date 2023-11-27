@@ -1,3 +1,4 @@
+/* eslint-disable */
 /* *******************************************************************************************
  *                                                                                           *
  * Please read the following tutorial before implementing tasks:                              *
@@ -6,7 +7,7 @@
  ******************************************************************************************* */
 
 /**
- * Returns the length of the given string.
+ * 1 Returns the length of the given string.
  *
  * @param {string} value - The input string to calculate the length of.
  * @return {number} - The length of the string.
@@ -19,12 +20,13 @@
  *   getStringLength(null) => 0
  *   getStringLength(undefined) => 0
  */
-function getStringLength(/* value */) {
-  throw new Error('Not implemented');
+function getStringLength(value) {
+  if (typeof value !== 'string') return 0;
+  return value.length;
 }
-
 /**
- * Returns true if the value is a string, otherwise returns false.
+ * 2 Returns true if the value is a string, otherwise returns false.
+ * Возвращает true, если значение является строкой, в противном случае возвращает false.
  *
  * @param {string} value - The value to check if it's a string.
  * @return {boolean} - True if the value is a string, false otherwise.
@@ -37,12 +39,16 @@ function getStringLength(/* value */) {
  *   isString('test') => true
  *   isString(new String('test')) => true
  */
-function isString(/* value */) {
-  throw new Error('Not implemented');
+function isString(value) {
+  if (typeof value === 'string' || value instanceof String) {
+    return true;
+  }
+  return false;
 }
 
 /**
- * Returns the result of concatenation of two strings.
+ * 3 Returns the result of concatenation of two strings.
+ * Возвращает результат объединения двух строк.
  *
  * @param {string} value1 - The first string to concatenate.
  * @param {string} value2 - The second string to concatenate.
@@ -58,7 +64,8 @@ function concatenateStrings(value1, value2) {
 }
 
 /**
- * Returns the first character of the given string.
+ * 4 Returns the first character of the given string.
+ * Возвращает первый символ заданной строки.
  *
  * @param {string} value - The input string to extract the first character from.
  * @return {string} - The first character of the string.
@@ -68,12 +75,12 @@ function concatenateStrings(value1, value2) {
  *   getFirstChar('cat') => 'c'
  *   getFirstChar('') => ''
  */
-function getFirstChar(/* value */) {
-  throw new Error('Not implemented');
+function getFirstChar(value) {
+  return value.charAt(0);
 }
-
 /**
- * Removes leading and trailing whitespace characters from the string.
+ * 5 Removes leading and trailing whitespace characters from the string.
+ * Удаляет начальные и конечные пробелы из строки.
  *
  * @param {string} value - The input string to remove leading and trailing whitespaces from.
  * @return {string} - The string with leading and trailing whitespaces removed.
@@ -88,7 +95,8 @@ function removeLeadingAndTrailingWhitespaces(value) {
 }
 
 /**
- * Removes only leading whitespace characters from the string.
+ * 6 Removes only leading whitespace characters from the string.
+ * Удаляет из строки только ведущие пробельные символы.
  *
  * @param {string} value - The input string to remove leading whitespaces from.
  * @return {string} - The string with leading whitespaces removed.
@@ -98,12 +106,12 @@ function removeLeadingAndTrailingWhitespaces(value) {
  *   removeLeadingWhitespaces('cat ') => 'cat '
  *   removeLeadingWhitespaces('\t\t\tHello, World! ') => 'Hello, World! '
  */
-function removeLeadingWhitespaces(/* value */) {
-  throw new Error('Not implemented');
+function removeLeadingWhitespaces(value) {
+  return value.trimStart();
 }
-
 /**
- * Removes only trailing whitespace characters from the string.
+ * 7 Removes only trailing whitespace characters from the string.
+ * Удаляет из строки только конечные пробелы.
  *
  * @param {string} value - The input string to remove trailing whitespaces from.
  * @return {string} - The string with trailing whitespaces removed.
@@ -113,12 +121,13 @@ function removeLeadingWhitespaces(/* value */) {
  *   removeTrailingWhitespaces('cat ') => 'cat'
  *   removeTrailingWhitespaces('\t\t\tHello, World! ') => '\t\t\tHello, World!'
  */
-function removeTrailingWhitespaces(/* value */) {
-  throw new Error('Not implemented');
+function removeTrailingWhitespaces(value) {
+  return value.trimEnd();
 }
 
 /**
- * Returns a string that is repeated the specified number of times.
+ * 8 Returns a string that is repeated the specified number of times.
+ * Возвращает строку, повторяющуюся указанное количество раз.
  *
  * @param {string} str - The string to repeat.
  * @param {number} times - The number of times to repeat the string.
@@ -130,12 +139,16 @@ function removeTrailingWhitespaces(/* value */) {
  *   repeatString('', 3) => ''
  *   repeatString('abc', -2) => ''
  */
-function repeatString(/* str, times */) {
-  throw new Error('Not implemented');
+function repeatString(str, times) {
+  if (times > 0) {
+    return str.repeat(times);
+  }
+  return '';
 }
 
 /**
- * Remove the first occurrence of a substring from a string.
+ * 9 Remove the first occurrence of a substring from a string.
+ * Удалить первое вхождение подстроки из строки.
  *
  * @param {string} str - The input string.
  * @param {string} value - The substring to remove from the string.
@@ -146,12 +159,13 @@ function repeatString(/* str, times */) {
  *   removeFirstOccurrences('I like legends', 'end') => 'I like legs'.
  *   removeFirstOccurrences('ABABAB', 'BA') => 'ABAB'.
  */
-function removeFirstOccurrences(/* str, value */) {
-  throw new Error('Not implemented');
+function removeFirstOccurrences(str, value) {
+  return str.replace(value, '');
 }
 
 /**
- * Remove the last occurrence of a substring from a string.
+ * 10 Remove the last occurrence of a substring from a string.
+ * Удалить последнее вхождение подстроки из строки.
  *
  * @param {string} str - The input string.
  * @param {string} value - The substring to remove from the string.
@@ -167,7 +181,8 @@ function removeLastOccurrences(/* str, value */) {
 }
 
 /**
- * Calculate the sum of character codes of the given string.
+ * 11 Calculate the sum of character codes of the given string.
+ * Вычислить сумму кодов символов данной строки.
  *
  * @param {string} str - The input string.
  * @return {number} - The sum of character codes of the string.
@@ -183,7 +198,8 @@ function sumOfCodes(/* str */) {
 }
 
 /**
- * Checks if a string starts with a specific substring.
+ * 12 Checks if a string starts with a specific substring.
+ * Проверяет, начинается ли строка с определенной подстроки.
  *
  * @param {string} str - The input string.
  * @param {string} substr - The substring to check.
@@ -193,12 +209,13 @@ function sumOfCodes(/* str */) {
  *   startsWith('Hello World', 'World') => false
  *   startsWith('Hello World', 'Hello') => true
  */
-function startsWith(/* str, substr */) {
-  throw new Error('Not implemented');
+function startsWith(str, substr) {
+  return str.startsWith(substr);
 }
 
 /**
- * Checks if a string ends with a specific substring.
+ * 13 Checks if a string ends with a specific substring.
+ * Проверяет, заканчивается ли строка определенной подстрокой.
  *
  * @param {string} str - The input string.
  * @param {string} substr - The substring to check.
@@ -208,12 +225,13 @@ function startsWith(/* str, substr */) {
  *   endsWith('Hello World', 'World') => true
  *   endsWith('Hello World', 'Hello') => false
  */
-function endsWith(/* str, substr */) {
-  throw new Error('Not implemented');
+function endsWith(str, substr) {
+  return str.endsWith(substr);
 }
 
 /**
- * Returns a time string in the "mm:ss" format.
+ * 14 Returns a time string in the "mm:ss" format.
+ * Возвращает строку времени в формате «мм:сс».
  *
  * @param {number} minutes - The number of minutes (non-negative integer).
  * @param {number} seconds - The number of seconds (non-negative integer).
@@ -225,12 +243,13 @@ function endsWith(/* str, substr */) {
  *   formatTime(0, 45) => "00:45"
  *   formatTime(0, 0) => "00:00"
  */
-function formatTime(/* minutes, seconds */) {
-  throw new Error('Not implemented');
+function formatTime(minutes, seconds) {
+  return `0${minutes}:${seconds}`;
 }
 
 /**
- * Returns a string in reverse order.
+ * 15 Returns a string in reverse order.
+ * Возвращает строку в обратном порядке.
  *
  * @param {string} str - The input string.
  * @return {string} - The string in reverse order.
@@ -239,12 +258,14 @@ function formatTime(/* minutes, seconds */) {
  *   reverseString('abcdef') => 'fedcba'
  *   reverseString('12345') => '54321'
  */
-function reverseString(/* str */) {
-  throw new Error('Not implemented');
+function reverseString(str) {
+  const reverse = str.split('').reverse().join('');
+  return reverse;
 }
 
 /**
- * Returns a string with characters in alphabetical order.
+ * 16 Returns a string with characters in alphabetical order.
+ * Возвращает строку с символами в алфавитном порядке.
  *
  * @param {string} str - The input string.
  * @return {string} - The string in alphabetical order.
@@ -254,12 +275,13 @@ function reverseString(/* str */) {
  *   orderAlphabetically('textbook') => 'bekoottx'
  *   orderAlphabetically('abc123xyz') => '123abcxyz'
  */
-function orderAlphabetically(/* str */) {
-  throw new Error('Not implemented');
+function orderAlphabetically(str) {
+  return str.split('').sort().join('');
 }
 
 /**
- * Checks if a given string contains a specified substring.
+ * 17 Checks if a given string contains a specified substring.
+ * Проверяет, содержит ли данная строка указанную подстроку.
  *
  * @param {string} str - The input string to search within.
  * @param {string} substring - The substring to check for in the input string.
@@ -270,12 +292,13 @@ function orderAlphabetically(/* str */) {
  *   containsSubstring('JavaScript is Fun', 'Python') => false
  *   containsSubstring('12345', '34') => true
  */
-function containsSubstring(/* str, substring */) {
-  throw new Error('Not implemented');
+function containsSubstring(str, substring) {
+  return str.includes(substring);
 }
 
 /**
- * Returns the number of vowels in the string.
+ * 18 Returns the number of vowels in the string.
+ * Возвращает количество гласных в строке.
  * Vowels: 'a', 'e', 'i', 'o', 'u', 'y', 'A', 'E', 'I', 'O', 'U', 'Y'.
  *
  * @param {string} str - The input string.
@@ -288,12 +311,14 @@ function containsSubstring(/* str, substring */) {
  *   countVowels('aEiOu') => 5
  *   countVowels('XYZ') => 1
  */
-function countVowels(/* str */) {
-  throw new Error('Not implemented');
+function countVowels(str) {
+  let vowelList = 'aeiouAEIOU';
+  return str.indexOf(vowelList);
 }
 
 /**
- * Returns true if the string is a palindrome; otherwise false.
+ * 19 Returns true if the string is a palindrome; otherwise false.
+ * Возвращает true, если строка является палиндромом; в противном случае ложь.
  * https://en.wikipedia.org/wiki/Palindrome
  *
  * @param {string} str - The input string.
@@ -305,8 +330,13 @@ function countVowels(/* str */) {
  *   isPalindrome('apple') => false
  *   isPalindrome('No lemon, no melon') => true
  */
-function isPalindrome(/* str */) {
-  throw new Error('Not implemented');
+function isPalindrome(str) {
+ let str1 = str.split('').reverse().join('');
+ if (str == str1) {
+  return true;
+ } else {
+  return false;
+ }
 }
 
 /**

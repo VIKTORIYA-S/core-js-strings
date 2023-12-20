@@ -182,7 +182,7 @@ function removeLastOccurrences(/* str, value */) {
 
 /**
  * 11 Calculate the sum of character codes of the given string.
- * Вычислить сумму кодов символов данной строки.
+ * Вычислить сумму 
  *
  * @param {string} str - The input string.
  * @return {number} - The sum of character codes of the string.
@@ -193,11 +193,12 @@ function removeLastOccurrences(/* str, value */) {
  *   sumOfCodes('') => 0
  *   sumOfCodes() => 0
  */
-function sumOfCodes(/* str */) {
+function sumOfCodes(str) {
   for (let i = 0; i <= str.length - 1; i++) {
-    
+let newStr = str[i].charCodeAt();
   }
-  throw new Error('Not implemented');
+  const sum = sumDigits(newStr);
+  return sum;
 }
 
 /**

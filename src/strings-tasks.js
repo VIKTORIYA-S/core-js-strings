@@ -160,7 +160,7 @@ function repeatString(str, times) {
  *   removeFirstOccurrences('ABABAB', 'BA') => 'ABAB'.
  */
 function removeFirstOccurrences(str, value) {
-  return str.replace(value, '');
+  return str.indexOf(value);
 }
 
 /**
@@ -177,7 +177,7 @@ function removeFirstOccurrences(str, value) {
  *   removeLastOccurrences('ABABAB', 'BA') => 'ABAB'.
  */
 function removeLastOccurrences(/* str, value */) {
-  throw new Error('Not implemented');
+  return  str.lastIndexOf(value);
 }
 
 /**
@@ -194,6 +194,9 @@ function removeLastOccurrences(/* str, value */) {
  *   sumOfCodes() => 0
  */
 function sumOfCodes(/* str */) {
+  for (let i = 0; i <= str.length - 1; i++) {
+    
+  }
   throw new Error('Not implemented');
 }
 
@@ -433,7 +436,7 @@ function getStringFromTemplate(firstName, lastName) {
 }
 
 /**
- * 24 Extracts a name from template string 'Hello, First_Name Last_Name!'.
+ * 24- Extracts a name from template string 'Hello, First_Name Last_Name!'.
  * Извлекает имя из строки шаблона «Привет, Имя Фамилия!».
  *
  * @param {string} value - The input value.
@@ -443,8 +446,11 @@ function getStringFromTemplate(firstName, lastName) {
  *   extractNameFromTemplate('Hello, John Doe!') => 'John Doe'
  *   extractNameFromTemplate('Hello, Chuck Norris!') => 'Chuck Norris'
  */
-function extractNameFromTemplate(/* value */) {
-  throw new Error('Not implemented');
+function extractNameFromTemplate(value) {
+  let newValue = value.replace('Hello', '');
+  let result = newValue.trimStart();
+  return result;
+
 }
 
 /**

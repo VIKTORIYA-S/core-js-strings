@@ -7,7 +7,7 @@
  ******************************************************************************************* */
 
 /**
- * 1 Returns the length of the given string.
+ * 1+ Returns the length of the given string.
  *
  * @param {string} value - The input string to calculate the length of.
  * @return {number} - The length of the string.
@@ -25,7 +25,7 @@ function getStringLength(value) {
   return value.length;
 }
 /**
- * 2 Returns true if the value is a string, otherwise returns false.
+ * 2+ Returns true if the value is a string, otherwise returns false.
  * Возвращает true, если значение является строкой, в противном случае возвращает false.
  *
  * @param {string} value - The value to check if it's a string.
@@ -47,7 +47,7 @@ function isString(value) {
 }
 
 /**
- * 3 Returns the result of concatenation of two strings.
+ * 3+ Returns the result of concatenation of two strings.
  * Возвращает результат объединения двух строк.
  *
  * @param {string} value1 - The first string to concatenate.
@@ -64,7 +64,7 @@ function concatenateStrings(value1, value2) {
 }
 
 /**
- * 4 Returns the first character of the given string.
+ * 4+ Returns the first character of the given string.
  * Возвращает первый символ заданной строки.
  *
  * @param {string} value - The input string to extract the first character from.
@@ -79,7 +79,7 @@ function getFirstChar(value) {
   return value.charAt(0);
 }
 /**
- * 5 Removes leading and trailing whitespace characters from the string.
+ * 5+ Removes leading and trailing whitespace characters from the string.
  * Удаляет начальные и конечные пробелы из строки.
  *
  * @param {string} value - The input string to remove leading and trailing whitespaces from.
@@ -160,7 +160,11 @@ function repeatString(str, times) {
  *   removeFirstOccurrences('ABABAB', 'BA') => 'ABAB'.
  */
 function removeFirstOccurrences(str, value) {
-  return str.indexOf(value);
+  const substr = str.indexOf(value);
+  if (substr === -1) {
+    return str;
+  }
+  return str.slice(0, substr) + str.slice(substr + value.length)
 }
 
 /**
@@ -176,8 +180,12 @@ function removeFirstOccurrences(str, value) {
  *   removeLastOccurrences('I like legends', 'end') => 'I like legs'.
  *   removeLastOccurrences('ABABAB', 'BA') => 'ABAB'.
  */
-function removeLastOccurrences(/* str, value */) {
-  return  str.lastIndexOf(value);
+function removeLastOccurrences(str, value) {
+  let substr = str.lastIndexOf(value);
+  if (substr === -1) {
+    return str;
+  }
+  return  str.slice(0, substr) + str.slice(substr + value.length);
 }
 
 /**
@@ -506,8 +514,12 @@ function extractEmails(str) {
  *    => 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
  *
  */
-function encodeToRot13(/* str */) {
-  throw new Error('Not implemented');
+function encodeToRot13(str) {
+  let newStr ="";
+  //..
+  newStr += str[i + 13]; // або alph[i + 13]
+  //..
+  return newStr;
 }
 
 /**
@@ -536,8 +548,10 @@ function encodeToRot13(/* str */) {
  *   'Q♠' => 50
  *   'K♠' => 51
  */
-function getCardId(/* value */) {
-  throw new Error('Not implemented');
+function getCardId(value) {
+  for (let i = 0; i < value.length - 1; i++) {
+    return value[i];
+  }
 }
 
 module.exports = {

@@ -190,7 +190,7 @@ function removeLastOccurrences(str, value) {
 
 /**
  * 11 Calculate the sum of character codes of the given string.
- * Вычислить сумму 
+ * Вычислить сумму кодов символов данной строки.
  *
  * @param {string} str - The input string.
  * @return {number} - The sum of character codes of the string.
@@ -202,12 +202,18 @@ function removeLastOccurrences(str, value) {
  *   sumOfCodes() => 0
  */
 function sumOfCodes(str) {
-  for (let i = 0; i <= str.length - 1; i++) {
-let newStr = str[i].charCodeAt();
+  let sum = 0;
+  if (str === '' || str === null || str === undefined) {
+    return 0;
   }
-  const sum = sumDigits(newStr);
-  return sum;
-}
+  let newStr = str.charCodeAt();
+    for (let i = 0; i <= newStr.length - 1; i++) {
+      sum = sum + i;
+        }
+        
+        return sum;
+  }
+
 
 /**
  * 12 Checks if a string starts with a specific substring.

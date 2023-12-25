@@ -189,7 +189,7 @@ function removeLastOccurrences(str, value) {
 }
 
 /**
- * 11 Calculate the sum of character codes of the given string.
+ * 11+ Calculate the sum of character codes of the given string.
  * Вычислить сумму кодов символов данной строки.
  *
  * @param {string} str - The input string.
@@ -202,17 +202,11 @@ function removeLastOccurrences(str, value) {
  *   sumOfCodes() => 0
  */
 function sumOfCodes(str) {
-  let sum = 0;
-  if (str === '' || str === null || str === undefined) {
+  if (str === '' || str === undefined || str === null) {
     return 0;
   }
-  let newStr = str.charCodeAt();
-    for (let i = 0; i <= newStr.length - 1; i++) {
-      sum = sum + i;
-        }
-        
-        return sum;
-  }
+  return str.split('').reduce((a, b) => a + b.charCodeAt(0), 0);
+}
 
 
 /**
@@ -262,7 +256,9 @@ function endsWith(str, substr) {
  *   formatTime(0, 0) => "00:00"
  */
 function formatTime(minutes, seconds) {
-  return `0${minutes}:${seconds}`;
+  const strMin = minutes.toString().padStart(2, '0');
+  const strSec = seconds.toString().padStart(2, '0');
+  return strMin.concat(':', strSec);
 }
 
 /**
@@ -330,8 +326,8 @@ function containsSubstring(str, substring) {
  *   countVowels('XYZ') => 1
  */
 function countVowels(str) {
-  let vowelList = 'aeiouAEIOU';
-  return str.indexOf(vowelList);
+  const vowelList = ['a', 'e', 'i', 'o', 'u', 'y', 'A', 'E', 'I', 'O', 'U', 'Y'];
+  return str.split('').filter((a) => vowelList.includes(a)).length;
 }
 
 /**
@@ -349,12 +345,9 @@ function countVowels(str) {
  *   isPalindrome('No lemon, no melon') => true
  */
 function isPalindrome(str) {
- let str1 = str.split('').reverse().join('');
- if (str == str1) {
-  return true;
- } else {
-  return false;
- }
+  return (
+    str.replace(/[^a-zA-Z0-9]/g, '').toLowerCase() === str.replace(/[^a-zA-Z0-9]/g, '').toLowerCase().split('').reverse().join('')
+  );
 }
 
 /**
@@ -418,16 +411,14 @@ function reverseWords(str) {
  *   invertCase('12345') => '12345'
  */
 function invertCase(str) {
-  str = str.split(' ');
-  let res = [];
-  for (let i = 0; i < str.length; i++) {
-    res.push (str[i].split(""));
-    if (res === UpperCase()) {
-      return res.toLowerCase().join(" ");
-    } else {
-      return res.toUpperCase().join(" ");
+  const result = [];
+  str.split('').map((elem) => {
+    if (elem.toLowerCase() === elem) {
+      return result.push(elem.toUpperCase());
     }
-}
+    return result.push(elem.toLowerCase());
+  });
+  return result.join('');
 }
 /**
  * 23 Returns the result of string template and given parameters firstName and lastName.

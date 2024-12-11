@@ -510,12 +510,10 @@ function extractEmails(str) {
  *
  */
 function encodeToRot13(str) {
-  let newStr ="";
-  //..
-  newStr += str[i + 13]; // або alph[i + 13]
-  //..
-  return newStr;
-}
+  let newStr = str.replace(/[A-Za-z]/g, function(c) { return String.fromCharCode(c.charCodeAt(0) + (c.toLowerCase() < 'n' ? 13 : -13)); });
+  console.log(newStr);
+  return newStr
+  }
 
 /**
  * 28 Returns playid card id.
@@ -543,10 +541,18 @@ function encodeToRot13(str) {
  *   'Q♠' => 50
  *   'K♠' => 51
  */
+
 function getCardId(value) {
-  for (let i = 0; i < value.length - 1; i++) {
-    return value[i];
-  }
+  const deck = [
+    'A♣', '2♣', '3♣', '4♣', '5♣', '6♣', '7♣', '8♣', '9♣', '10♣', 'J♣', 'Q♣', 'K♣',
+    'A♦', '2♦', '3♦', '4♦', '5♦', '6♦', '7♦', '8♦', '9♦', '10♦', 'J♦', 'Q♦', 'K♦',
+    'A♥', '2♥', '3♥', '4♥', '5♥', '6♥', '7♥', '8♥', '9♥', '10♥', 'J♥', 'Q♥', 'K♥',
+    'A♠', '2♠', '3♠', '4♠', '5♠', '6♠', '7♠', '8♠', '9♠', '10♠', 'J♠', 'Q♠', 'K♠'
+  ];
+  
+  const playId = deck.indexOf(value);
+  console.log(playId);
+  return playId !== -1 ? playId : null;
 }
 
 module.exports = {
